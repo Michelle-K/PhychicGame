@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>Rock! Paper! Scissors!</title>
+</head>
+
+<body>
+	<div id="game">
+		<p>Press r, p, or s to begin playing</p>
+	</div>
+	<script type="text/javascript">
+		
+		var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+		var wins = 0;
+		var losses = 0;
+		var guessesLeft = 10;
+		var allGuesses = [];
+
+		
+		var computerGuess = options[Math.floor(Math.random() * options.length)];
+
+		document.onkeyup = function() {
+			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+			allGuesses.push(String.fromCharCode(event.keyCode).toLowerCase());
+			
+			var html = "<p>Press r, p, or s to begin playing</p>" + 
+							"<p>Wins: " + wins + "</p>" + 
+							"<p>Losses: " + losses + "</p>" +
+							"<p>Guesses Left: " + guessesLeft + "</p>" +
+							"<p> Your guesses so far: " + allGuesses + "</p>";
+
+			document.querySelector("#game").innerHTML = html;
+		
+		
+
+			console.log(computerGuess);
+		
+			
+			if (userGuess === computerGuess){
+				wins++;
+				guessesLeft = 10;
+				alert("You Win!");
+				allGuesses =[];
+				return;	
+				}
+			if (userGuess !== computerGuess){
+				guessesLeft--;
+			}	
+				
+
+			
+		};
+
+	</script>
+
+</body>
+</html>
+
+
