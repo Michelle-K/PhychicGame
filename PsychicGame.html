@@ -2,12 +2,13 @@
 <html lang="en-us">
 <head>
 	<meta charset="UTF-8">
-	<title>Rock! Paper! Scissors!</title>
+	<title>Psychic Game</title>
 </head>
 
 <body>
 	<div id="game">
-		<p>Press r, p, or s to begin playing</p>
+		<h1>Psychic Game</h1>
+		<p>Try to guess the secret letter. Press any letter to begin.</p>
 	</div>
 	<script type="text/javascript">
 		
@@ -16,6 +17,11 @@
 		var losses = 0;
 		var guessesLeft = 10;
 		var allGuesses = [];
+		var reset = function(){
+			allGuesses =[];
+			guessesLeft =10;
+			
+		};
 
 		
 		var computerGuess = options[Math.floor(Math.random() * options.length)];
@@ -24,7 +30,7 @@
 			var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 			allGuesses.push(String.fromCharCode(event.keyCode).toLowerCase());
 			
-			var html = "<p>Press r, p, or s to begin playing</p>" + 
+			var html = "<p>Try to guess the secret letter. Press any letter to begin.</p>" + 
 							"<p>Wins: " + wins + "</p>" + 
 							"<p>Losses: " + losses + "</p>" +
 							"<p>Guesses Left: " + guessesLeft + "</p>" +
@@ -39,10 +45,8 @@
 			
 			if (userGuess === computerGuess){
 				wins++;
-				guessesLeft = 10;
 				alert("You Win!");
-				allGuesses =[];
-				return;	
+				reset();	
 				}
 			if (userGuess !== computerGuess){
 				guessesLeft--;
